@@ -109,23 +109,15 @@ pub struct AttributeSet(BTreeSet<HashKeyValue>);
 
 impl From<&[KeyValue]> for AttributeSet {
     fn from(values: &[KeyValue]) -> Self {
-        let mut seen = HashSet::with_capacity(values.len());
         AttributeSet(
             values
                 .iter()
-                .rev()
-                .filter_map(|kv| {
-                    if seen.contains(&&kv.key) {
-                        None
-                    } else {
-                        seen.insert(&kv.key);
-                        Some(HashKeyValue(kv.clone()))
-                    }
-                })
+                .map(|kv| HashKeyValue(kv.clone()))
                 .collect(),
         )
     }
 }
+
 
 impl From<&Resource> for AttributeSet {
     fn from(values: &Resource) -> Self {

@@ -11,6 +11,8 @@
 - Add unit/doc tests for MeterProvider #1220
 - Changed dependency from `opentelemetry_api` to `opentelemetry` as the latter
   is now the API crate. [#1226](https://github.com/open-telemetry/opentelemetry-rust/pull/1226)
+- Remove de-duping of attribute keys
+  [#1226](https://github.com/open-telemetry/opentelemetry-rust/pull/1226)
 
 ## v0.20.0
 
